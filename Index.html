@@ -1,0 +1,273 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+    <link href="sc1.css" rel="stylesheet" />
+    <script src="Js1.js"></script>
+    <link href="../Bootsrap/bootstrap.min.css" rel="stylesheet" />
+</head>
+<body>
+    <!-- ================================================ AGUA SATURADA ================================================ -->
+
+
+    <h1>Termodinamica</h1>
+    <div class="contenedor-formularios">
+        
+
+        <form class="Formulario-vapor">
+            <h2>Agua saturada</h2>
+            <div class="form-group">
+                <input class="form-control" type="number" id="Temperatura" name="Tempe" placeholder="Temperatura (°C)" />
+            </div>
+            <br />
+
+            <div class="form-group">
+                <input class="form-control" type="number" id="Vapor" name="Vape" placeholder="Fraccion de vapor (X)" />
+            </div>
+            <br />
+
+            <div class="form-group">
+                <button class="btn btn-warning btn-calcular-final" type="button" id="boton" onclick="calcularTermodinamica()"> Calcular</button>
+            </div>
+            <br />
+
+            <div class="form-vapor">
+                <p>
+                    V promedio: <output id="Vprome" name="Vpromedio" for="Temperatura Vapor">0 </output> m³/kg
+                </p>
+                <p>
+                    U promedio: <output id="Uprome" name="Upromedio" for="Temperatura Vapor">0 </output> kJ/kg
+                </p>
+                <p>
+                    H promedio: <output id="Hprome" name="Hpromedio" for="Temperatura Vapor">0 </output> kJ/kg
+                </p>
+                <p>
+                    S promedio: <output id="Sprome" name="Spromedio" for="Temperatura Vapor">0 </output> kJ/kg·K
+                </p>
+            </div>
+        </form>
+
+        <!-- ================================================ BAROMETRO ================================================ -->
+
+
+        <form class="Barometro">
+            <h2>Barometro Simple</h2>
+
+            <div class="grupo-botones">
+                <button class="btn btn-warning btn-auto" type="button" id="boton" onclick="prepararBarometro('P')"> Presion</button>
+                <button class="btn btn-warning btn-auto" type="button" id="boton" onclick="prepararBarometro('H')"> Altura</button>
+                <button class="btn btn-warning btn-auto" type="button" id="boton" onclick="prepararBarometro('D')"> Densidad</button>
+            </div>
+            <br />
+           
+            <div class="form-group">
+                <input class="form-control" type="number" id="Presion" name="Pre" placeholder="Presion (Pa)" />
+            </div>
+            <br />
+
+            <div class="form-group">
+                <input class="form-control" type="number" id="Altura" name="Altu" placeholder="Altura (m)" />
+            </div>
+            <br />
+
+            <div class="form-group">
+                <input class="form-control" type="number" id="Densidad" name="densi" placeholder="Densidad (kg/m³)" />
+            </div>
+            <br />
+
+            <div class="form-group">
+                <button class="btn btn-warning btn-calcular-final" type="button" id="boton" onclick="calcularBarometro()"> Calcular</button>
+            </div>
+
+            <br />
+
+            <div class="form-vapor">
+                <p>
+                    Valor: <output id="Vdensi">0 </output> <span id="unidad-barometro"></span>
+                </p>
+            </div>
+        </form>
+
+        <!-- ================================================ Piston MASA ================================================ -->
+
+
+        <form class="Piston-masa">
+            <h2>Piston con masa</h2>
+            <div class="grupo-botones">
+                <button class="btn btn-warning btn-auto" type="button" id="boton" onclick="prepararPiston('P')"> Presión</button>
+                <button class="btn btn-warning btn-auto" type="button" id="boton" onclick="prepararPiston('M')"> Masa</button>
+                <button class="btn btn-warning btn-auto" type="button" id="boton" onclick="prepararPiston('A')"> Área</button>
+            </div>
+            <br />
+
+
+            <div class="form-group">
+                <input class="form-control" type="number" id="P-presion" placeholder="Presión (Pa)" />
+            </div>
+            <br />
+
+            <div class="form-group">
+                <input class="form-control" type="number" id="P-masa"  placeholder="Masa (kg)" />
+            </div>
+            <br />
+
+            <div class="form-group">
+                <input class="form-control" type="number" id="P-area" placeholder="Área (m²)" />
+            </div>
+            <br />
+
+            <div class="form-group">
+                <input class="form-control" type="number" id="P-atm" placeholder="Presion Atmosferica (Pa)" />
+            </div>
+            <br />
+
+            <div class="form-group">
+                <button class="btn btn-warning btn-calcular-final" type="button" id="boton" onclick="calcularPiston()"> Calcular</button>
+            </div>
+
+            <br />
+
+            <div class="form-vapor">
+                <p>
+                    Valor: <output id="Vpiston">0 </output> <span id="unidad-piston"></span>
+                </p>
+            </div>
+        </form>
+
+        <!-- ================================================ PISTON AGUA ================================================ -->
+
+
+        <form class="Piston-agua">
+            <h2>Piston con agua</h2>
+            <div class="grupo-botones">
+                <button class="btn btn-warning btn-auto" type="button" id="boton" onclick="prepararPistonAgua('P')"> Presión</button>      
+                <button class="btn btn-warning btn-auto" type="button" id="boton" onclick="prepararPistonAgua('M')"> Masa</button>
+                <button class="btn btn-warning btn-auto" type="button" id="boton" onclick="prepararPistonAgua('A')"> Área</button>
+            </div>
+            <br />
+
+            <div class="grupo-botones">
+                <input class="form-control" type="number" id="PA-presion"  placeholder="Presión (Pa)" />
+            </div>
+            <br />
+
+            <div class="form-group">
+                <input class="form-control" type="number" id="PA-masa" placeholder="Masa (kg)" />
+            </div>
+            <br />
+
+            <div class="form-group">
+                <input class="form-control" type="number" id="PA-area" placeholder="Área (m²)" />
+            </div>
+            <br />
+
+            <div class="form-group">
+                <input class="form-control" type="number" id="PA-atm" placeholder="Presion Atmosferica (Pa)" />
+            </div>
+            <br />
+
+            <div class="form-group">
+                <button class="btn btn-warning btn-calcular-final" type="button" id="boton" onclick="calcularPistonAgua()"> Calcular</button>
+            </div>
+
+            <br />
+
+            <div class="form-vapor">
+                <p>
+                    Valor: <output id="VpistonAgua">0</output>
+                    <span id="unidad-piston-agua"></span>
+                </p>
+            </div>
+        </form>
+
+        <!-- ================================================ MANÓMETRO MULTIFLUIDO ================================================ -->
+
+        <form class="multifluidos">
+            <h2>Multifluidos</h2>
+            <div class="grupo-botones">
+                <button class="btn btn-warning btn-auto" type="button" id="boton1" onclick=""> P</button>
+                <button class="btn btn-warning btn-auto" type="button" id="boton1" onclick=""> h1</button>
+                <button class="btn btn-warning btn-auto" type="button" id="boton1" onclick=""> h2</button>
+                <button class="btn btn-warning btn-auto" type="button" id="boton1" onclick=""> h3</button>
+                <button class="btn btn-warning btn-auto" type="button" id="boton1" onclick=""> p1</button>
+                <button class="btn btn-warning btn-auto" type="button" id="boton1" onclick=""> p2</button>
+                <button class="btn btn-warning btn-auto" type="button" id="boton1" onclick=""> p3</button>
+            </div>
+         
+
+
+            <div class="form-group">
+                <p class="titulo-tramo">TRAMO 1</p>
+                <div class="tramo-compacto">
+                    <input class="form-control" type="number" id="h1" placeholder="Altura" />
+                    <input class="form-control" type="number" id="p1" placeholder="Densidad kg/m³" />
+                    <div class="sube-baja">
+                        <button class="btn-dir" type="button" id="btn-s1" onclick="setDireccion(1, 'sube')">Sube</button>
+                        <button class="btn-dir" type="button" id="btn-b1" onclick="setDireccion(1, 'baja')">Baja</button>
+                    </div>
+                </div>
+            </div>
+               
+
+            <div class="form-group">
+                    <p class="titulo-tramo">TRAMO 2</p>
+                    <div class="tramo-compacto">
+                        <input class="form-control" type="number" id="h2" placeholder="Altura" />
+                        <input class="form-control" type="number" id="p2" placeholder="Densidad kg/m³" />
+                        <div class="sube-baja">
+                            <button class="btn-dir" id="btn-s2" type="button" onclick="setDireccion(2, 'sube')">Sube</button>
+                            <button class="btn-dir" id="btn-b2" type="button" onclick="setDireccion(2, 'baja')">Baja</button>
+                        </div>
+                    </div>
+                </div>
+                  
+
+            <div class="form-group">
+                    <p class="titulo-tramo">TRAMO 3</p>
+                    <div class="tramo-compacto">
+                        <input class="form-control" type="number" id="h3" name="altura" placeholder="Altura" />
+                        <input class="form-control" type="number" id="p3" name="densidad" placeholder="Densidad kg/m³" />
+                        <div class="sube-baja">
+                            <button class="btn-dir" id="btn-s3" type="button" onclick="setDireccion(3, 'sube')">Sube</button>
+                            <button class="btn-dir" id="btn-b3" type="button" onclick="setDireccion(3, 'baja')">Baja</button>
+                        </div>
+                    </div>
+                    </div>
+                       
+
+            <div class="form-group">
+                <p class="titulo-tramo">TRAMO 4</p>
+                <div class="tramo-compacto">
+                    <input class="form-control" type="number" id="h4" placeholder="Altura" />
+                    <input class="form-control" type="number" id="p4" placeholder="Densidad kg/m³" />
+                    <div class="sube-baja">
+                        <button class="btn-dir" id="btn-s4" type="button" onclick="setDireccion(4, 'sube')">Sube</button>
+                        <button class="btn-dir" id="btn-b4" type="button" onclick="setDireccion(4, 'baja')">Baja</button>
+                    </div>
+                </div>
+            </div>
+               
+            <br />
+
+            <div class="form-group">
+                <input class="form-control" type="number" id="atm1" placeholder="Presion Atmosferica (Pa)" />
+            </div>
+          
+            <br />
+            <div class="form-group">
+                <button class="btn btn-warning btn-calcular-final" type="button" id="boton" onclick="calcularMultifluido()"> Calcular</button>
+            </div>
+
+
+            <div class="form-resultado">
+                
+                <p>Valor Absoluto: <output id="PATM">0</output> kPa</p>
+                
+            </div>
+            </form>
+
+
+    </div>
+</body>
+</html> 
