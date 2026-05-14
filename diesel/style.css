@@ -1,0 +1,294 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: #ffffff;
+    color: #000;
+}
+
+/* ENCABEZADO */
+.header {
+    background: #4169e1;
+    color: white;
+    height: 92px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 18px;
+    padding: 0 20px;
+}
+
+.engine-icon {
+    width: 90px;
+    height: 64px;
+    background: #f4f8ff;
+    border-radius: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: inset 0 0 0 2px rgba(255,255,255,0.6);
+}
+
+.motor-icon {
+    width: 78px;
+    height: 52px;
+}
+
+.motor-icon rect,
+.motor-icon circle,
+.motor-icon path,
+.motor-icon line {
+    fill: none;
+    stroke: #1f2937;
+    stroke-width: 4;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+}
+
+.motor-icon circle {
+    fill: #dbeafe;
+}
+
+.motor-icon text {
+    font-size: 13px;
+    font-weight: bold;
+    fill: #0d6efd;
+    text-anchor: middle;
+    font-family: Arial, sans-serif;
+}
+
+.header h1 {
+    margin: 0;
+    font-size: 32px;
+    font-weight: bold;
+    line-height: 1.1;
+}
+
+.header p {
+    margin: 4px 0 0;
+    font-size: 16px;
+}
+
+/* CONTENEDOR GENERAL */
+.main-container {
+    display: grid;
+    grid-template-columns: 1.1fr 1fr;
+    gap: 8px;
+    padding: 8px;
+}
+
+.left-column,
+.right-column {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+/* PANEL DE INPUTS */
+.input-card,
+.result-card,
+.chart-card {
+    background: #e0edff;
+    border-radius: 10px;
+    padding: 16px;
+}
+
+.input-card {
+    min-height: 355px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+/* FILAS DE CAMPOS */
+.input-row {
+    display: grid;
+    grid-template-columns: 285px 170px 70px;
+    align-items: center;
+    justify-content: center;
+    gap: 14px;
+    margin-bottom: 10px;
+}
+
+.input-row label {
+    font-size: 22px;
+    text-align: left;
+}
+
+.input-row label span {
+    font-size: 16px;
+    margin-left: 10px;
+}
+
+.input-row input {
+    height: 28px;
+    width: 170px;
+    border: 1px solid #b5b5b5;
+    padding: 4px 8px;
+    font-size: 14px;
+}
+
+.input-row small {
+    font-size: 14px;
+    text-align: left;
+}
+
+/* BOTONES */
+.buttons {
+    display: flex;
+    justify-content: center;
+    gap: 24px;
+    margin-top: 18px;
+    padding-left: 80px;
+}
+
+.btn {
+    width: 150px;
+    height: 38px;
+    border-radius: 4px;
+    border: 2px solid white;
+    cursor: pointer;
+    font-weight: 500;
+}
+
+.btn.primary {
+    background: #4169e1;
+    color: white;
+}
+
+.btn.secondary {
+    background: #c7c7c7;
+    color: black;
+}
+
+.btn:hover {
+    opacity: 0.9;
+}
+
+/* FÓRMULAS */
+.formula-card {
+    background: #ffeec2;
+    border-radius: 6px;
+    padding: 10px 20px;
+}
+
+.formula-card h2 {
+    margin: 0 0 8px;
+    font-size: 22px;
+}
+
+.formula-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 18px;
+}
+
+.formula-card p {
+    margin: 6px 0;
+}
+
+.formula {
+    font-family: Georgia, serif;
+    font-style: italic;
+    font-size: 18px;
+    text-align: center;
+}
+
+.formula.big {
+    font-size: 20px;
+}
+
+/* RESULTADOS */
+.result-card {
+    padding: 10px 14px;
+}
+
+.result-card h2,
+.chart-card h2 {
+    color: #0066cc;
+    margin: 0 0 10px;
+    font-size: 20px;
+}
+
+.result-row {
+    background: #f9fbfd;
+    display: flex;
+    justify-content: space-around;
+    gap: 12px;
+    padding: 10px;
+}
+
+.result-box {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    min-width: 180px;
+}
+
+.result-box.single {
+    justify-content: flex-start;
+    width: 100%;
+}
+
+.icon {
+    font-size: 42px;
+}
+
+.result-box p {
+    color: navy;
+    font-weight: bold;
+    margin: 0 0 6px;
+}
+
+.result-box strong {
+    color: green;
+    font-size: 18px;
+}
+
+/* CANVAS */
+.chart-card {
+    min-height: 310px;
+}
+
+#dieselCanvas {
+    width: 100%;
+    height: 300px;
+    background: #e0edff;
+    display: block;
+}
+
+/* RESPONSIVE */
+@media (max-width: 900px) {
+    .main-container {
+        grid-template-columns: 1fr;
+    }
+
+    .input-row {
+        grid-template-columns: 1fr;
+        justify-items: stretch;
+    }
+
+    .input-row input {
+        width: 100%;
+    }
+
+    .buttons {
+        padding-left: 0;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .header {
+        height: auto;
+        padding: 18px;
+        text-align: center;
+        flex-direction: column;
+    }
+
+    .formula-grid {
+        grid-template-columns: 1fr;
+    }
+}

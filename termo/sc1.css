@@ -1,0 +1,193 @@
+﻿body {
+}
+.contenedor-formularios {
+    display: flex; /* Activa el modo flexible */
+    flex-wrap: wrap; /* Si no caben en una fila, saltan a la siguiente */
+    justify-content: center; /* Centra los formularios horizontalmente */
+    gap: 20px; /* Crea el espacio (espaciado) entre cada formulario */
+    padding: 20px;
+    align-items: flex-start; /* Alinea todos los formularios por la parte de arriba */
+}
+.Formulario-vapor,
+.Barometro,
+.Piston-masa,
+.Piston-agua,
+.multifluidos {
+    width: 310px; /* Un poco más anchos para que respiren */
+    min-height: 500px; /* Altura mínima para que todos se vean iguales */
+    background-color: #f4f4f4; /* Un gris más suave y moderno */
+    padding: 20px;
+    border-radius: 12px;
+    display: flex; /* Hacemos que el form mismo sea flex */
+    flex-direction: column; /* Contenido en vertical */
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1); /* Sombra para que resalten */
+}
+/* Para que el botón de "Calcular" siempre esté hasta abajo */
+.btn-calcular-final {
+    margin-top: auto; /* Empuja el botón al fondo del contenedor */
+    width: 100% !important;
+    font-weight: bold;
+}
+
+/* Contenedor para alinear botones a los lados */
+.grupo-botones {
+    display: flex;
+    flex-wrap: wrap; /* Permite que los botones bajen si no caben */
+    gap: 8px; /* Espacio entre botones */
+    justify-content: center; /* Los centra dentro del formulario */
+    margin-bottom: 15px;
+}
+
+/* Ajuste individual para los botones */
+.btn-auto {
+    width: auto !important; /* Quita el ancho del 100% */
+    padding: 6px 12px; /* Espacio interno para que no se vea apretado */
+    font-size: 14px; /* Ajuste de tamaño de fuente opcional */
+}
+    .btn-auto:focus {
+        background-color: #d39e00 !important; /* Un naranja más oscuro */
+        box-shadow: inset 0 3px 5px rgba(0,0,0,0.2);
+    }
+
+/* Estilo para los separadores de TRAMOS en Multifluidos */
+.titulo-tramo {
+    background: transparent !important; /* Quita el fondo blanco */
+    border-left: none !important; /* Quita la franja amarilla */
+    box-shadow: none !important; /* Quita la sombra */
+    padding: 5px 0 !important; /* Reduce el espacio */
+    margin-top: 10px !important;
+    font-weight: bold;
+    color: #555; /* Gris oscuro */
+    font-size: 13px;
+    text-transform: uppercase; /* Todo en mayúsculas */
+    letter-spacing: 1px;
+    display: block !important; /* Que ocupe su propia línea */
+}
+
+/* Contenedor compacto para los inputs de los tramos */
+.tramo-compacto {
+    display: flex;
+    gap: 10px; /* Espacio entre Altura y Densidad */
+    margin-bottom: 5px; /* Reduce el espacio vertical entre tramos */
+}
+
+.tramo-compacto .form-control {
+    font-size: 13px; /* Texto un poco más pequeño para ahorrar espacio */
+    padding: 5px 10px; /* Menos padding interno */
+}
+
+h2 {
+    text-align: center;
+    margin-top: 0; /* Elimina espacio extra arriba si es necesario */
+    color: #333; /* Color que combine con el resto */
+    border-bottom: 2px solid #ffc107; /* Línea decorativa color ámbar */
+    font-family: inherit;
+    padding-bottom: 5px;
+}
+
+/* Contenedor general de resultados para todos los formularios */
+.form-vapor, .form-resultado {
+    margin-top: 15px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+/* Estilo unificado para cada línea de resultado */
+.form-vapor p, .form-resultado p {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #ffffff; /* Fondo blanco para que resalte del gris */
+    padding: 12px 15px;
+    margin: 0;
+    border-radius: 8px;
+    font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+    font-size: 14px;
+    color: #333;
+    border-left: 4px solid #ffc107; /* Franja amarilla lateral para identificar resultados */
+    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+}
+
+/* Resalte para el output */
+.form-vapor output, .form-resultado output {
+    font-weight: 800;
+    color: #2c3e50;
+    font-variant-numeric: tabular-nums; /* Mantiene los números alineados */
+}
+
+/* Unidades (m³/kg, kJ/kg, etc.) */
+.form-vapor p::after {
+    font-size: 11px;
+    color: #7f8c8d;
+    font-weight: 600;
+    margin-left: 5px;
+}
+
+.Formulario-presion {
+    width: 300px;
+    background-color: #CCC;
+    padding: 16px;
+    border-radius: 10px;
+    margin: 40px auto;
+}
+
+h1 {
+    text-align: center;
+    font-size: 300%;
+    letter-spacing: 2px;
+}
+
+/* Contenedor principal de cada tramo */
+.form-group-compacto {
+    margin-bottom: 8px; /* Espacio mínimo entre tramos */
+}
+
+/* Fila que contiene inputs y flechas */
+.tramo-fila {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+    .tramo-fila .form-control {
+        flex: 1; /* Los inputs se estiran igual */
+        padding: 4px 8px;
+        height: 30px;
+        font-size: 12px;
+    }
+
+/* Mini botones Sube/Baja uno al lado del otro o uno sobre otro */
+.sube-baja {
+    display: flex;
+    flex-direction: column; /* Flechas una arriba de otra para ahorrar ancho */
+    gap: 2px;
+}
+
+.btn-dir {
+    background-color: #ffc107;
+    border: none;
+    border-radius: 3px;
+    font-size: 10px;
+    padding: 0 6px;
+    cursor: pointer;
+    height: 14px;
+    line-height: 1;
+}
+
+    .btn-dir:hover {
+        background-color: #e0a800;
+    }
+
+/* Input de atmósfera un poco más pequeño */
+.input-final {
+    margin-top: 5px;
+    height: 35px;
+    font-size: 13px;
+}
+
+/* Ajuste general para evitar scroll */
+.multifluidos {
+    min-height: 480px !important; /* Reducimos la altura mínima */
+    padding: 12px !important; /* Menos padding interno */
+}

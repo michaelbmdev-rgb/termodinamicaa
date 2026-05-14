@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculadora del Ciclo Diésel</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <header class="header">
+
+        <div class="engine-icon">
+            <svg viewBox="0 0 120 80" class="motor-icon" aria-hidden="true">
+                <rect x="28" y="24" width="54" height="34" rx="6"></rect>
+                <rect x="41" y="12" width="28" height="12" rx="3"></rect>
+                <rect x="18" y="34" width="12" height="15" rx="2"></rect>
+                <rect x="82" y="31" width="16" height="20" rx="3"></rect>
+                <rect x="96" y="36" width="10" height="9" rx="2"></rect>
+
+                <line x1="48" y1="12" x2="48" y2="5"></line>
+                <line x1="62" y1="12" x2="62" y2="5"></line>
+
+                <circle cx="55" cy="41" r="9"></circle>
+
+                <path d="M55 32 L55 28"></path>
+                <path d="M55 54 L55 50"></path>
+                <path d="M46 41 L42 41"></path>
+                <path d="M68 41 L64 41"></path>
+                <path d="M49 35 L46 32"></path>
+                <path d="M64 50 L61 47"></path>
+                <path d="M49 47 L46 50"></path>
+                <path d="M64 32 L61 35"></path>
+
+                <text x="60" y="74">DIESEL</text>
+            </svg>
+        </div>
+
+        <div>
+            <h1>CALCULADORA DEL CICLO DIÉSEL</h1>
+            <p>Análisis Termodinámico usando fórmulas del ciclo diésel</p>
+        </div>
+
+    </header>
+
+    <main class="main-container">
+
+        <section class="left-column">
+
+            <div class="input-card">
+
+                <div class="input-row">
+                    <label>Relación de compresión <span>(r)</span></label>
+                    <input type="number" id="txtCompresion" value="18" step="any">
+                    <small>-</small>
+                </div>
+
+                <div class="input-row">
+                    <label>Relación de Corte <span>(r<sub>c</sub>)</span></label>
+                    <input type="number" id="txtCorte" value="2" step="any">
+                    <small>-</small>
+                </div>
+
+                <div class="input-row">
+                    <label>Coeficiente adiabático <span>(k)</span></label>
+                    <input type="number" id="txtCoeficiente" value="1.4" step="any">
+                    <small>-</small>
+                </div>
+
+                <div class="input-row">
+                    <label>Temperatura inicial <span>(T<sub>1</sub>)</span></label>
+                    <input type="number" id="txtTInicial" value="300" step="any">
+                    <small>K</small>
+                </div>
+
+                <div class="input-row">
+                    <label>Presión inicial <span>(P<sub>1</sub>)</span></label>
+                    <input type="number" id="txtPInicial" value="100" step="any">
+                    <small>kPa</small>
+                </div>
+
+                <div class="input-row">
+                    <label>Calor de entrada <span>(c<sub>p</sub>)</span></label>
+                    <input type="number" id="txtCp" value="1.005" step="any">
+                    <small>kJ/kg*K</small>
+                </div>
+
+                <div class="input-row">
+                    <label>Calor de salida <span>(c<sub>v</sub>)</span></label>
+                    <input type="number" id="txtCv" value="0.741" step="any">
+                    <small>kJ/kg*K</small>
+                </div>
+
+                <div class="input-row">
+                    <label>Masa <span>(m)</span></label>
+                    <input type="number" id="txtM" value="1" step="any">
+                    <small>kg</small>
+                </div>
+
+                <div class="buttons">
+                    <button id="btnCalcular" class="btn primary">Calcular</button>
+                    <button id="btnLimpiar" class="btn secondary">Borrar</button>
+                </div>
+
+            </div>
+
+            <div class="formula-card">
+                <h2>Fórmulas utilizadas</h2>
+
+                <div class="formula-grid">
+                    <div>
+                        <p><strong>Relación Temperatura-Volumen:</strong></p>
+                        <p class="formula">T₂ = T₁ · r<sup>k−1</sup></p>
+
+                        <p><strong>Relación Presión-Volumen:</strong></p>
+                        <p class="formula">P₂ = P₁ · r<sup>k</sup></p>
+                    </div>
+
+                    <div>
+                        <p><strong>Calor de entrada:</strong></p>
+                        <p class="formula">Q<sub>in</sub> = m · c<sub>p</sub> · (T₃ − T₂)</p>
+
+                        <p><strong>Calor de salida:</strong></p>
+                        <p class="formula">Q<sub>out</sub> = m · c<sub>v</sub> · (T₄ − T₁)</p>
+                    </div>
+                </div>
+
+                <p><strong>Eficiencia térmica del ciclo diésel:</strong></p>
+                <p class="formula big">
+                    η = 1 − 1 / r<sup>k−1</sup> · [(r<sub>c</sub><sup>k</sup> − 1) / k(r<sub>c</sub> − 1)]
+                </p>
+            </div>
+
+        </section>
+
+        <section class="right-column">
+
+            <div class="result-card">
+                <h2>Procesos de cambio de estados</h2>
+
+                <div class="result-row">
+                    <div class="result-box">
+                        <span class="icon">🌡️</span>
+                        <div>
+                            <p>Temperatura en T₂</p>
+                            <strong id="lblTemperatura2">0</strong>
+                        </div>
+                    </div>
+
+                    <div class="result-box">
+                        <span class="icon">⏱️</span>
+                        <div>
+                            <p>Presión en P₂</p>
+                            <strong id="lblPresion2">0</strong>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="result-card">
+                <h2>Transferencia de energía</h2>
+
+                <div class="result-row">
+                    <div class="result-box">
+                        <span class="icon">🔥</span>
+                        <div>
+                            <p>Calor de entrada (c<sub>p</sub>)</p>
+                            <strong id="lblCalorEntrada">0</strong>
+                        </div>
+                    </div>
+
+                    <div class="result-box">
+                        <span class="icon">❄️</span>
+                        <div>
+                            <p>Calor de salida (c<sub>v</sub>)</p>
+                            <strong id="lblCalorSalida">0</strong>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="result-card">
+                <h2>Eficiencia de energía</h2>
+
+                <div class="result-row">
+                    <div class="result-box single">
+                        <span class="icon">⚙️</span>
+                        <div>
+                            <p>Eficiencia térmica (η)</p>
+                            <strong id="lblEficiencia">0%</strong>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="chart-card">
+                <h2>Representación del ciclo diésel</h2>
+                <canvas id="dieselCanvas"></canvas>
+            </div>
+
+        </section>
+
+    </main>
+
+    <script src="script.js"></script>
+</body>
+</html>
